@@ -1,0 +1,17 @@
+SELECT
+  o.Date AS Order_date,
+  pc.CategoryName AS category_name,
+  p.ProdName AS product_name,
+  p.Price AS product_price,
+  o.Quantity AS 0rder_qty,
+  (o.Quantity * p.Price) AS total_sales,
+  c.CustomerEmail AS cust_email,
+  c.CustoemrCity AS cust_city
+FROM `RakaminProject.Orders` o
+JOIN `RakaminProject.Customers` c
+  ON o.CustomerID = c.CustomerID
+JOIN `RakaminProject.Products` p
+  ON o.ProdNumber = p.ProdNumber
+JOIN `RakaminProject.ProductCategory` pc
+  ON p.Category = pc.CategoryID
+ORDER BY order_date ASC;
